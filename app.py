@@ -34,15 +34,24 @@ def author():
 @app.route("/lab1/oak")
 def oak():
     path = url_for("static", filename="oak.png")
-    return """
+    css_path = url_for("static", filename="lab1.css")
+    return f"""
 <!doctype html>
 <html>
+      <head>
+        <link rel="stylesheet" href="{css_path}">
+    </head>
     <body>
         <h1>Дуб</h1>
-        <img src=""" + path + """>
+        <img src="{path}  alt="Дуб">
     </body>
 </html>
 """
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
 count = 0
 
 @app.route('/lab1/counter')
