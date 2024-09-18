@@ -71,3 +71,8 @@ def created():
 ''', 201
 
 
+@app.errorhandler(404)
+def not_found(err):
+    return "Нет такой страницы", 404
+
+
