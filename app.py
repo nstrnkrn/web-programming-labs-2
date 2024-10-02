@@ -33,20 +33,19 @@ def author():
 
 @app.route("/lab1/oak")
 def oak():
-    path = url_for("static", filename="oak.png")
-    css_path = url_for("static", filename="lab1.css")
-    return f"""
-<!doctype html>
-<html>
-      <head>
-        <link rel="stylesheet" href="{css_path}">
-    </head>
+    return '''
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="''' + url_for('static', filename='lab1.css') + '''">
+    <title>Дуб</title>
+</head>
     <body>
         <h1>Дуб</h1>
-        <img src="{path}  alt="Дуб">
+        <img src="''' + url_for('static', filename='oak.jpg') + '''">
     </body>
 </html>
-"""
+'''
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -109,4 +108,14 @@ def not_found(err):
     return "Нет такой страницы", 404
 
 
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+    
 
