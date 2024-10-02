@@ -1,4 +1,4 @@
-from flask import Flask, url_for, redirect, render_template
+from flask import Flask, url_for, redirect, render_template, make_response
 app = Flask(__name__)
 
 
@@ -93,13 +93,10 @@ def lab1():
                         <a href="lab1/oak">Дуб</a>
                     </li>
                     <li>
-                        <a href="lab1/counter">Счетчикм  </a>
+                        <a href="lab1/counter">Счетчик</a>
                     </li>
-                    <li>
-                        <a href="lab1/python">Python</a>
-                    </li>
-                    <li>
-                        <a href="lab1/crypto">Криптовалюта</a>
+                     <li>
+                        <a href="lab1/custom">Рецепт брауни</a>
                     </li>
                 
                 </ol>
@@ -228,6 +225,14 @@ def error_418():
 @app.errorhandler(500)
 def internal_error(error):
     return render_template('500.html'), 500
+
+@app.route('/lab1/custom')
+def custom():
+    response = make_response(render_template('custom.html'))
+    response.headers['Content-Language'] = 'ru'
+    response.headers['X-Custom-Header-1'] = 'Custom Value 1'
+    response.headers['X-Custom-Header-2'] = 'Custom Value 2'
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)
