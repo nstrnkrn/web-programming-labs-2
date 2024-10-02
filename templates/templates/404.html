@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка 404</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='lab1.css') }}">
+</head>
+<body>
+    <h1>Ой! Страница не найдена</h1>
+    <p>Похоже, вы попали на страницу, которой не существует. Попробуйте вернуться на <a href="{{ url_for('lab1') }}">главную страницу</a>.</p>
+    <img src="{{ url_for('static', filename='404.png') }}" alt="Ошибка 404">
+</body>
+</html>

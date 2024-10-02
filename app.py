@@ -93,7 +93,7 @@ def lab1():
                         <a href="lab1/oak">Дуб</a>
                     </li>
                     <li>
-                        <a href="lab1/counter">Счетчик</a>
+                        <a href="lab1/counter">Счетчикм  </a>
                     </li>
                     <li>
                         <a href="lab1/python">Python</a>
@@ -188,7 +188,7 @@ def created():
 
 @app.errorhandler(404)
 def not_found(err):
-    return "Нет такой страницы", 404
+    return render_template('404.html'), 404
 
 
 
@@ -196,6 +196,34 @@ def not_found(err):
 @app.route('/index')
 def index():
     return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+@app.route('/error/400')
+def error_400():
+    return "Bad Request", 400
+
+@app.route('/error/401')
+def error_401():
+    return "Unauthorized", 401
+
+@app.route('/error/402')
+def error_402():
+    return "Payment Required", 402
+
+@app.route('/error/403')
+def error_403():
+    return "Forbidden", 403
+
+@app.route('/error/405')
+def error_405():
+    return "Method Not Allowed", 405
+
+@app.route('/error/418')
+def error_418():
+    return "I'm a teapot", 418
 
 if __name__ == '__main__':
     app.run(debug=True)
