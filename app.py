@@ -1,6 +1,8 @@
 from flask import Flask, url_for, redirect
 app = Flask(__name__)
 
+
+
 @app.route("/lab1/web")
 def web():
     return """<!doctype html>
@@ -31,6 +33,85 @@ def author():
                     </body>
                 </html>"""
 
+@app.route("/menu")
+def menu():
+    return """
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Захаров Илья Максимович, лабораторная 1</title>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, WEB-программирование, часть 2. Список лабораторных
+        </header>
+        
+        <div>
+            <ol>
+                <li>
+                    <a href="/lab1">Лабораторная работа 1</a>
+                </li>
+            
+            </ol>
+        </div>
+
+        <footer>
+            &copy; Нестеренко Ирина, ФБИ-22, 3 курс, 2024 
+        </footer>
+    </body>
+</html>
+"""
+
+
+@app.route("/lab1")
+def lab1():
+    return """
+    <!DOCTYPE html>
+    <html lang="ru">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Захаров Илья Максимович, лабораторная 1</title>
+        </head>
+        <body>
+            <header>
+                НГТУ, ФБ, Лабораторная работа 1
+            </header>
+            <p>Flask — фреймворк для создания веб-приложений на языке программирования Python, 
+            использующий набор инструментов Werkzeug, а также шаблонизатор Jinja2. Относится к 
+            категории так называемых микрофреймворков — минималистичных каркасов веб-приложений, 
+            сознательно предоставляющих лишь самые базовые возможности.</p>
+
+            <a href="/menu">menu</a>
+            
+            <h2>Реализованные роуты</h2>
+            <div>
+                <ol>
+                    <li>
+                        <a href="lab1/oak">Дуб</a>
+                    </li>
+                    <li>
+                        <a href="lab1/counter">Счетчик</a>
+                    </li>
+                    <li>
+                        <a href="lab1/python">Python</a>
+                    </li>
+                    <li>
+                        <a href="lab1/crypto">Криптовалюта</a>
+                    </li>
+                
+                </ol>
+            </div>
+            
+            <footer>
+                &copy; Нестеренко Ирина, ФБИ-22, 3 курс, 2024 
+            </footer>
+        </body>
+    </html>
+    """
+
 @app.route("/lab1/oak")
 def oak():
     return '''
@@ -46,6 +127,7 @@ def oak():
     </body>
 </html>
 '''
+
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -64,6 +146,7 @@ def counter():
         Сколько раз вы заходили: {count}
         <br>
         <a href="{url_for('reset_counter')}">Очистить счетчик</a>
+    </footer>
     </body>
 </html>
 '''

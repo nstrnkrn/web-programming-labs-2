@@ -1,0 +1,20 @@
+body {
+    background-color: #eeebd5; /* Цвет фона */
+    color: #c0560b; /* Цвет текста */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 8em;
+    margin-bottom: 10px;
+}
+
+img {
+    width: 300px; /* Ширина изображения */
+    height: auto; /* Автоматическая высота, чтобы сохранить пропорции */
+    border: 5px solid #8b4513; /* Рамка вокруг изображения */
+    border-radius: 10px; /* Скругление углов */
+    margin-bottom: 20px;
+}
+

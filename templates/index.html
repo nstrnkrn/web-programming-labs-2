@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НГТУ, ФБ, Лабораторные работы</title>
+</head>
+<body>
+    <header>
+        <h1>НГТУ, ФБ, WEB-программирование, часть 2. Список лабораторных</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Главная</a></li>
+            <li><a href="{{ url_for('web') }}">Web-сервер на Flask</a></li>
+            <li><a href="{{ url_for('author') }}">Автор</a></li>
+            <li><a href="{{ url_for('oak') }}">Дуб</a></li>
+            <li><a href="{{ url_for('counter') }}">Счетчик</a></li>
+            <li><a href="{{ url_for('lab1') }}">Лабораторная 1</a></li>
+        </ul>
+    </nav>
+    
+    <footer>
+        <p>ФИО: Нестеренко Ирина</p>
+        <p>Группа: ФБИ 22</p>
+        <p>Курс: 3 Курс</p>
+    </footer>
+</body>
+</html>
