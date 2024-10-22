@@ -1,0 +1,13 @@
+{% extends "base.html " %}
+
+{# номер лабораторной работы: #}
+(% block lab %)Лабораторная работа 2(% endblock %)
+
+{# основной контент: #}
+{% block main %}
+    <div>Фразa: {{ phrase }}</div>
+    <div>Фразa: {{ phrase | title }}</div>
+    <div>Фразa: {{ phrase | striptags }}</div>
+    <div>Фразa: {{ phrase | safe }}</div>
+    <div>Фразa: {{ phrase | striptags | replace('сколько', 'много')  | replace('нам', 'тут') | upper}}</div>
+{%endblock %}
