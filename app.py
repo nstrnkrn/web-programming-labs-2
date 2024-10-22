@@ -270,4 +270,10 @@ def example():
     name = 'Нестеренко Ирина'
     group = 'ФБИ-22'
     number = '2'
-    return render_template('example.html', name = name, group = group, number = number)
+    fruits =[
+        {'name': 'яблоки', 'price': 100}, 
+        {'name': 'груши', 'price': 120},
+        {'name': 'апельсины', 'price': 200},
+        {'name': 'манго', 'price': 320},
+        ]
+    return render_template('example.html', name = name, group = group, number = number, fruits=fruits)
