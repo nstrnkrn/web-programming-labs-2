@@ -2,7 +2,7 @@ body {
     background-color: #eeebd5; /* Цвет фона */
     color: #c0560b; /* Цвет текста */
     font-family: Arial, sans-serif;
-    text-align: center;
+    text-align: left;
 }
 
 h1 {
@@ -19,5 +19,17 @@ img {
     border: 5px solid #8b4513; /* Рамка вокруг изображения */
     border-radius: 10px; /* Скругление углов */
     margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px; /* Увеличивает отступы внутри ячеек */
+    border: 1px solid #e09336; /* Добавляет границы для ячеек */
+}
+th {
+    background-color: #dfd0be; /* Добавляет фон для заголовков */
 }
 

@@ -305,3 +305,21 @@ def calc(a, b):
     pow_result = a ** b
     return render_template('calc.html', sum_result=sum_result, sub_result=sub_result,
                            mul_result=mul_result, div_result=div_result, pow_result=pow_result, a=a, b=b)
+
+
+books = [
+    {"author": "Джордж Оруэлл", "title": "1984", "genre": "Научная фантастика", "pages": 328},
+    {"author": "Рэй Брэдбери", "title": "451 градус по Фаренгейту", "genre": "Научная фантастика", "pages": 158},
+    {"author": "Федор Достоевский", "title": "Преступление и наказание", "genre": "Роман", "pages": 671},
+    {"author": "Джейн Остин", "title": "Гордость и предубеждение", "genre": "Роман", "pages": 432},
+    {"author": "Михаил Булгаков", "title": "Мастер и Маргарита", "genre": "Фантастика", "pages": 480},
+    {"author": "Эрих Мария Ремарк", "title": "Три товарища", "genre": "Роман", "pages": 480},
+    {"author": "Габриэль Гарсиа Маркес", "title": "Сто лет одиночества", "genre": "Магический реализм", "pages": 448},
+    {"author": "Антуан де Сент-Экзюпери", "title": "Маленький принц", "genre": "Философская сказка", "pages": 96},
+    {"author": "Лев Толстой", "title": "Война и мир", "genre": "Роман", "pages": 1440},
+    {"author": "Джоан Роулинг", "title": "Гарри Поттер и философский камень", "genre": "Фэнтези", "pages": 309}
+]
+
+@app.route('/lab2/books/')
+def books_list():
+    return render_template('books.html', books=books)
