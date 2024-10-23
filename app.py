@@ -237,9 +237,18 @@ def custom():
 if __name__ == '__main__':
     app.run(debug=True)
 
+
+
+
+
+
+
+
 @app.route('/lab2/a/')
 def a():
     return 'ok'
+
+
 
 flower_list = ['роза', 'тюльпан', 'незабудка', 'ромашка']
     
@@ -264,6 +273,7 @@ def add_flower(name):
     </body>
 </html>
 '''
+
 
 @app.route('/lab2/example')
 def example():
