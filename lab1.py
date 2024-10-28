@@ -3,6 +3,7 @@ lab1 = Blueprint('lab1',__name__)
 
 
 
+
 @lab1.route("/lab1/web")
 def web():
     return """<!doctype html>
@@ -16,6 +17,7 @@ def web():
             'X-Server': 'sample',
             'Content-Type': 'text/plain; charset=utf-8'
             }
+
 
 @lab1.route("/lab1/author")
 def author():
@@ -34,10 +36,8 @@ def author():
                 </html>"""
 
 
-
-
 @lab1.route("/lab1")
-def lab1():
+def lab():
     return """
     <!DOCTYPE html>
     <html lang="ru">
@@ -97,8 +97,6 @@ def oak():
 '''
 
 
-
-
 count = 0
 
 @lab1.route('/lab1/counter')
@@ -117,6 +115,7 @@ def counter():
 </html>
 '''
 
+
 @lab1.route('/lab1/reset_counter')
 def reset_counter():
     global count
@@ -129,8 +128,6 @@ def reset_counter():
     </body>
 </html>
 '''
-
-
 
 
 @lab1.route("/lab1/info")
