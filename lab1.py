@@ -4,19 +4,19 @@ lab1 = Blueprint('lab1',__name__)
 
 
 
-@lab1.route("/lab1/web")
-def web():
-    return """<!doctype html>
-        <html>
-            <body>
-                <h1>web-сервер на flask</h1>
-                <a href="/author">author</a>
-                <a href="/lab1">lab1</a>
-            </body>
-        </html>""", 200, {
-            'X-Server': 'sample',
-            'Content-Type': 'text/plain; charset=utf-8'
-            }
+# @lab1.route("/lab1/web")
+# def web():
+#     return """<!doctype html>
+#         <html>
+#             <body>
+#                 <h1>web-сервер на flask</h1>
+#                 <a href="/author">author</a>
+#                 <a href="/lab1">lab1</a>
+#             </body>
+#         </html>""", 200, {
+#             'X-Server': 'sample',
+#             'Content-Type': 'text/plain; charset=utf-8'
+#             }
 
 
 @lab1.route("/lab1/author")
