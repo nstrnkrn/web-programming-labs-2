@@ -1,0 +1,35 @@
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 3 {% endblock %}
+
+{% block main %}
+    <h1>Лабораторная 3</h1>
+    <div>Тема лабораторной работы-формы. Список сделанных страниц:</div>
+    <ol>
+        <li>
+            <a href="/lab3/cookie">Куки</a>
+        </li>
+
+        
+        <li>
+            <a href="/lab2/books">Книги</a>
+        </li>
+
+        <li>
+            <a href="/lab2/calc">Калькулятор</a>
+        </li>
+
+        <li>
+            <a href="/lab2/objects">Города</a>
+        </li>
+
+        <li>
+            <a href="/lab2/filters">Фраза</a>
+        </li>
+
+        <li>
+            <a href="/lab2/flower_info">Цветы</a>
+        </li>
+    </ol>
+{% endblock %} 

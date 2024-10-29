@@ -1,10 +1,13 @@
 from flask import Flask, url_for, redirect, render_template, make_response, render_template
 from lab1 import lab1
 from lab2 import lab2
+from lab3 import lab3
 
 app = Flask(__name__)
 app.register_blueprint(lab1)
 app.register_blueprint(lab2)
+app.register_blueprint(lab3)
+
 
 @app.route("/menu")
 def menu():
@@ -14,7 +17,7 @@ def menu():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Захаров Илья Максимович, лабораторная 1</title>
+        <title>Нестеренко Ирина, лабораторная 1</title>
     </head>
     <body>
         <header>
@@ -26,6 +29,15 @@ def menu():
                 <li>
                     <a href="/lab1">Лабораторная работа 1</a>
                 </li>
+
+                 <li>
+                    <a href="/lab2">Лабораторная работа 2</a>
+                </li>
+
+                 <li>
+                    <a href="/lab3">Лабораторная работа 3</a>
+                </li>
+
             
             </ol>
         </div>
