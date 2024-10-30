@@ -21,7 +21,7 @@ def cookie():
 @lab3.route('/lab3/del_cookie')
 def del_cookie():
     resp = make_response(redirect('/lab3'))
-    resp.delete_cookie('name', 'Ira', max_age=5)
+    resp.delete_cookie('name', 'Ira')
     resp.delete_cookie('age', '19')
     resp.delete_cookie('name_color')
     return resp
@@ -89,6 +89,23 @@ def settings():
         if font_weight:
             resp.set_cookie('font_weight', font_weight)   
         return resp
+
+
+@lab3.route('/lab3/del_settings', methods=['GET'])
+def del_cookies():
+    resp = make_response(redirect('lab3'))
+    resp.delete_cookie('color')
+    resp.delete_cookie('background_color')
+    resp.delete_cookie('font_size')
+    resp.delete_cookie('font_weight')
+    return resp
+
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 @lab3.route('/lab3/ticket', methods=['GET', 'POST'])
