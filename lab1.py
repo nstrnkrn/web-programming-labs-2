@@ -2,8 +2,6 @@ from flask import Blueprint, url_for, redirect, render_template, make_response, 
 lab1 = Blueprint('lab1',__name__)
 
 
-
-
 # @lab1.route("/lab1/web")
 # def web():
 #     return """<!doctype html>

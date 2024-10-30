@@ -160,6 +160,10 @@ def ticket():
         price += 150
 
     return render_template('lab3/ticket.html', fio=fio, shelf=shelf, with_linen=with_linen, with_baggage=with_baggage, age=age, departure=departure, destination=destination, date=date, insurance=insurance, price=price)
+
+
+
+
     
 
 
