@@ -89,6 +89,60 @@ def settings():
         if font_weight:
             resp.set_cookie('font_weight', font_weight)   
         return resp
+
+
+@lab3.route('/lab3/ticket', methods=['GET', 'POST'])
+def ticket():
+    if request.method == 'GET':
+        # Передаем пустой словарь errors при GET запросе
+        return render_template('lab3/ticket_form.html', errors={})
+
+    errors = {}
+    fio = request.form.get('fio')
+    if not fio:
+        errors['fio'] = 'Заполните поле ФИО'
+
+    shelf = request.form.get('shelf')
+    if not shelf:
+        errors['shelf'] = 'Выберите полку'
+
+    with_linen = request.form.get('with_linen')
+    with_baggage = request.form.get('with_baggage')
+    age = request.form.get('age')
+    if not age:
+        errors['age'] = 'Заполните поле возраста'
+    elif not age.isdigit() or not (1 <= int(age) <= 120):
+        errors['age'] = 'Возраст должен быть от 1 до 120 лет'
+
+    departure = request.form.get('departure')
+    if not departure:
+        errors['departure'] = 'Заполните поле пункта выезда'
+
+    destination = request.form.get('destination')
+    if not destination:
+        errors['destination'] = 'Заполните поле пункта назначения'
+
+    date = request.form.get('date')
+    if not date:
+        errors['date'] = 'Заполните поле даты поездки'
+
+    insurance = request.form.get('insurance')
+
+    if errors:
+        return render_template('lab3/ticket_form.html', errors=errors, fio=fio, shelf=shelf, with_linen=with_linen, with_baggage=with_baggage, age=age, departure=departure, destination=destination, date=date, insurance=insurance)
+
+    # Расчет цены
+    price = 1000 if int(age) >= 18 else 700
+    if shelf in ['нижняя', 'нижняя боковая']:
+        price += 100
+    if with_linen:
+        price += 75
+    if with_baggage:
+        price += 250
+    if insurance:
+        price += 150
+
+    return render_template('lab3/ticket.html', fio=fio, shelf=shelf, with_linen=with_linen, with_baggage=with_baggage, age=age, departure=departure, destination=destination, date=date, insurance=insurance, price=price)
     
 
 
