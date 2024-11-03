@@ -6,7 +6,9 @@
     <h1>Оплата</h1>
 
 
-    <form action="/lab3/success">
+    <form action="/lab3/success" method="get">
+        <input type="hidden" name="price" value="{{ price }}">
+                             
         <div>Номер банковской карты:</div>
         <label>
             <input type="text" value="card" pattern="\d{3}">

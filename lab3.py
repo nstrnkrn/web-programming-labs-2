@@ -163,6 +163,42 @@ def ticket():
 
 
 
+# Список автомобилей
+cars = [
+    {"name": "Toyota Camry", "price": 25000, "brand": "Toyota", "year": 2020},
+    {"name": "Honda Civic", "price": 22000, "brand": "Honda", "year": 2021},
+    {"name": "Ford Mustang", "price": 35000, "brand": "Ford", "year": 2019},
+    {"name": "Chevrolet Malibu", "price": 24000, "brand": "Chevrolet", "year": 2020},
+    {"name": "Nissan Altima", "price": 23000, "brand": "Nissan", "year": 2021},
+    {"name": "Hyundai Sonata", "price": 21000, "brand": "Hyundai", "year": 2020},
+    {"name": "Kia Optima", "price": 20000, "brand": "Kia", "year": 2021},
+    {"name": "Volkswagen Jetta", "price": 22000, "brand": "Volkswagen", "year": 2020},
+    {"name": "Mazda 3", "price": 23000, "brand": "Mazda", "year": 2021},
+    {"name": "Subaru Outback", "price": 27000, "brand": "Subaru", "year": 2020},
+    {"name": "Lexus ES", "price": 40000, "brand": "Lexus", "year": 2021},
+    {"name": "BMW 3 Series", "price": 45000, "brand": "BMW", "year": 2020},
+    {"name": "Mercedes-Benz C-Class", "price": 50000, "brand": "Mercedes-Benz", "year": 2021},
+    {"name": "Audi A4", "price": 42000, "brand": "Audi", "year": 2020},
+    {"name": "Tesla Model 3", "price": 48000, "brand": "Tesla", "year": 2021},
+    {"name": "Porsche Panamera", "price": 85000, "brand": "Porsche", "year": 2020},
+    {"name": "Jaguar XF", "price": 55000, "brand": "Jaguar", "year": 2021},
+    {"name": "Land Rover Range Rover", "price": 90000, "brand": "Land Rover", "year": 2020},
+    {"name": "Volvo S60", "price": 41000, "brand": "Volvo", "year": 2021},
+    {"name": "Cadillac XT5", "price": 44000, "brand": "Cadillac", "year": 2020}
+]
+
+@lab3.route('/lab3/cars', methods=['GET', 'POST'])
+def cars_search():
+    if request.method == 'POST':
+        min_price = float(request.form.get('min_price', 0))
+        max_price = float(request.form.get('max_price', 999999))
+        
+        filtered_cars = [car for car in cars if min_price <= car['price'] <= max_price]
+        return render_template('lab3/cars_search.html', cars=filtered_cars, min_price=min_price, max_price=max_price)
+    
+    return render_template('lab3/cars_search.html', cars=cars)
+
+
 
     
 
