@@ -156,4 +156,9 @@ def tree() :
     elif operation == 'plant':
         tree_count += 1
 
-    return render_template('lab4/tree.html', tree_count=tree_count)    
+    return redirect('/lab4/tree') 
+
+    return render_template('lab4/tree.html', tree_count=tree_count) 
+
+ 
+ 
