@@ -38,3 +38,104 @@ def div():
         return render_template('lab4/div.html', x1=x1, x2=x2, result=result)
     
     return render_template('lab4/div.html')
+
+
+@lab4.route('/lab4/sum', methods=['GET', 'POST'])
+def sum():
+    if request.method == 'POST':
+        x1 = request.form.get('x1', 0)
+        x2 = request.form.get('x2', 0)
+        
+        try:
+            x1 = int(x1)
+            x2 = int(x2)
+        except ValueError:
+            return render_template('lab4/sum.html', x1=x1, x2=x2, error='Оба поля должны содержать числа')
+        
+        result = x1 + x2
+        return render_template('lab4/sum.html', x1=x1, x2=x2, result=result)
+    
+    return render_template('lab4/sum.html')
+
+@lab4.route('/lab4/mul', methods=['GET', 'POST'])
+def mul():
+    if request.method == 'POST':
+        x1 = request.form.get('x1', 1)
+        x2 = request.form.get('x2', 1)
+        
+        try:
+            x1 = int(x1)
+            x2 = int(x2)
+        except ValueError:
+            return render_template('lab4/mul.html', x1=x1, x2=x2, error='Оба поля должны содержать числа')
+        
+        result = x1 * x2
+        return render_template('lab4/mul.html', x1=x1, x2=x2, result=result)
+    
+    return render_template('lab4/mul.html')
+
+@lab4.route('/lab4/sub', methods=['GET', 'POST'])
+def sub():
+    if request.method == 'POST':
+        x1 = request.form.get('x1')
+        x2 = request.form.get('x2')
+        
+        if x1 == '' or x2 == '':
+            return render_template('lab4/sub.html', x1=x1, x2=x2, error='Оба поля должны быть заполнены')
+        
+        try:
+            x1 = int(x1)
+            x2 = int(x2)
+        except ValueError:
+            return render_template('lab4/sub.html', x1=x1, x2=x2, error='Оба поля должны содержать числа')
+        
+        result = x1 - x2
+        return render_template('lab4/sub.html', x1=x1, x2=x2, result=result)
+    
+    return render_template('lab4/sub.html')
+
+@lab4.route('/lab4/pow', methods=['GET', 'POST'])
+def pow():
+    if request.method == 'POST':
+        x1 = request.form.get('x1')
+        x2 = request.form.get('x2')
+        
+        if x1 == '' or x2 == '':
+            return render_template('lab4/pow.html', x1=x1, x2=x2, error='Оба поля должны быть заполнены')
+        
+        try:
+            x1 = int(x1)
+            x2 = int(x2)
+        except ValueError:
+            return render_template('lab4/pow.html', x1=x1, x2=x2, error='Оба поля должны содержать числа')
+        
+        if x1 == 0 and x2 == 0:
+            return render_template('lab4/pow.html', x1=x1, x2=x2, error='Оба поля не могут быть нулями')
+        
+        result = x1 ** x2
+        return render_template('lab4/pow.html', x1=x1, x2=x2, result=result)
+    
+    return render_template('lab4/pow.html')
+
+@lab4.route('/lab4/division', methods=['GET', 'POST'], endpoint='division')
+def division():
+    if request.method == 'POST':
+        x1 = request.form.get('x1')
+        x2 = request.form.get('x2')
+        
+        if x1 == '' or x2 == '':
+            return render_template('lab4/division.html', x1=x1, x2=x2, error='Оба поля должны быть заполнены')
+        
+        try:
+            x1 = int(x1)
+            x2 = int(x2)
+        except ValueError:
+            return render_template('lab4/division.html', x1=x1, x2=x2, error='Оба поля должны содержать числа')
+        
+        if x2 == 0:
+            return render_template('lab4/division.html', x1=x1, x2=x2, error='Деление на ноль невозможно')
+        
+        result = x1 / x2
+        return render_template('lab4/division.html', x1=x1, x2=x2, result=result)
+    
+    return render_template('lab4/division.html')

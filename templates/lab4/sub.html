@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 4{% endblock %}
+
+{% block main %}
+    <h1>Вычитание чисел</h1>
+    
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    
+    <form method="POST">
+        <div>
+            <label for="x1">Число 1:</label>
+            <input type="text" id="x1" name="x1" value="{{ x1 or '' }}">
+        </div>
+        <br>
+        <div>
+            <label for="x2">Число 2:</label>
+            <input type="text" id="x2" name="x2" value="{{ x2 or '' }}">
+        </div>
+        <br>
+        <button type="submit">Вычесть</button>
+    </form>
+
+    {% if result is not none %}
+        <h2>Результат:</h2>
+        <p>{{ x1 }} - {{ x2 }} = {{ result }}</p>
+    {% endif %}
+{% endblock %}
