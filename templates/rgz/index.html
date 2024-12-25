@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инициативы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        Нестеренко Ирина
+    </div>
+    <h1>Список инициатив</h1>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if session.get('user_id') %}
+        <!-- Кнопка для создания новой инициативы (видна только авторизованным пользователям) -->
+        <a href="{{ url_for('rgz.create_initiative') }}">
+            <button>Создать новую инициативу</button>
+        </a>
+        
+        <!-- Кнопка для выхода из аккаунта -->
+        <a href="{{ url_for('rgz.logout') }}">
+            <button>Выйти</button>
+        </a>
+    {% else %}
+        <!-- Если пользователь не авторизован, показываем кнопку для входа или регистрации -->
+        <div class="auth-links">
+            <a href="{{ url_for('rgz.register') }}">
+                <button>Зарегистрироваться</button>
+            </a>
+            <a href="{{ url_for('rgz.login') }}">
+                <button>Войти</button>
+            </a>
+        </div>
+    {% endif %}
+
+    {% if initiatives %}
+        <ul>
+            {% for initiative in initiatives %}
+            <div class="initiative-card">
+                <h3>{{ initiative.title }}</h3>
+                <p>{{ initiative.description }}</p>
+                <p><strong>Дата создания:</strong> {{ initiative.created_at }}</p>
+                <p><strong>Оценка:</strong> {{ initiative.rating }}</p>
+
+                {% if session['user_id'] == initiative.user_id %}
+                    <form action="{{ url_for('rgz.delete_initiative', initiative_id=initiative.id) }}" method="post">
+                        <button type="submit">Удалить</button>
+                    </form>
+                {% endif %}
+
+                <!-- Форма для голосования -->
+                <!-- Кнопка "Голосовать за" -->
+                    <form action="{{ url_for('rgz.vote_initiative', initiative_id=initiative.id, vote_type='up') }}" method="post">
+                        <button type="submit">👍 Голосовать за</button>
+                    </form>
+
+                    <!-- Кнопка "Голосовать против" -->
+                    <form action="{{ url_for('rgz.vote_initiative', initiative_id=initiative.id, vote_type='down') }}" method="post">
+                        <button type="submit">👎 Голосовать против</button>
+                    </form>
+
+            
+                </form>
+            </div>
+        {% endfor %}
+
+        </ul>
+
+        <!-- Пагинация -->
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="{{ url_for('rgz.index', page=page - 1) }}">« Предыдущая</a>
+            {% endif %}
+            {% if page < total_pages %}
+                <a href="{{ url_for('rgz.index', page=page + 1) }}">Следующая »</a>
+            {% endif %}
+        </div>
+
+        <!-- Кнопка для загрузки следующих инициатив -->
+        {% if page < total_pages %}
+            <a href="{{ url_for('rgz.index', page=page + 1) }}">Загрузить больше инициатив</a>
+        {% endif %}
+
+    {% else %}
+        <p>Нет инициатив для отображения.</p>
+    {% endif %}
+</body>
+</html>

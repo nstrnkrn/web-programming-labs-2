@@ -1,0 +1,109 @@
+/* ========================= */
+/* 1. Карточка инициативы в рамке */
+/* ========================= */
+.initiative-card {
+    background-color: #ffffff; /* Белый фон */
+    border: 2px solid #e0e0e0; /* Светлая рамка */
+    border-radius: 12px; /* Скруглённые углы */
+    padding: 20px; /* Внутренний отступ */
+    margin: 15px 0; /* Отступы между карточками */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.initiative-card:hover {
+    transform: translateY(-5px); /* Небольшое поднятие карточки */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Усиленная тень при наведении */
+}
+
+.initiative-card h3 {
+    color: #0a2e55; /* Тёмно-синий */
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.initiative-card p {
+    color: #666; /* Серый текст */
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+/* ========================= */
+/* 2. Улучшение шапки (header) */
+/* ========================= */
+/* Стили для header */
+.header {
+    background: linear-gradient(to right, #4c75af, #a650b0); /* Градиентный фон */
+    color: white; /* Белый текст */
+    text-align: center; /* Выравнивание текста по центру */
+    font-size: 24px; /* Размер шрифта */
+    font-weight: bold; /* Жирное начертание */
+    padding: 15px 0; /* Внутренние отступы сверху и снизу */
+    margin-bottom: 20px; /* Отступ снизу */
+    text-transform: uppercase; /* Текст в верхнем регистре */
+    letter-spacing: 1.5px; /* Межбуквенный интервал */
+    font-family: 'Arial', sans-serif; /* Шрифт */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+
+/* ========================= */
+/* 3. Кнопки улучшенного вида */
+/* ========================= */
+button {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 10px 5px; /* Расстояние между кнопками */
+}
+
+button:hover {
+    background-color: #4682b4;
+    transform: translateY(-2px);
+}
+
+/* ========================= */
+/* 4. Улучшения для таблиц */
+/* ========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #0a2e55;
+    color: white;
+}
+
+
+/* ========================= */
+/* 6. Футер */
+/* ========================= */
+footer {
+    background-color: #0a2e55;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+
+
