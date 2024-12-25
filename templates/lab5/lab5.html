@@ -3,25 +3,97 @@
 {% block lab %} Лабораторная работа 5 {% endblock %}
 
 {% block main %}
-    <h1>Лабораторная 5</h1>
-    <div>Тема лабораторной работы - Формы (POST). Список сделанных страниц:</div>
-    
-    <!-- Проверяем, есть ли в сессии логин -->
-    <p>Пользователь: {% if login %} {{ login }} {% else %} Anonymous {% endif %}</p>
 
-    <ol>
-        <li> 
-            <a href="/lab4/login">Список статей</a>
-        </li>
-        <li> 
-            <a href="/lab4/register">Создать статью</a>
-        </li>
-        <li> 
-            <a href="/lab4/list">Войти</a>
-        </li>
-        <li> 
-            <a href="/lab4/create">Регистрация</a>
-        </li>
-    </ol>
+<style>
+    .navbar {
+        background-color: #b0d4e3; /* Светло-голубой фон */
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    .navbar .nav-links {
+        display: flex;
+        gap: 10px;
+    }
+    .navbar .nav-links a {
+        text-decoration: none;
+        background: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: black;
+        border: 1px solid #ccc;
+    }
+    .navbar .nav-links a:hover {
+        background-color: #e0f0f8;
+    }
+    .navbar .user {
+        font-weight: bold;
+        margin-left: auto;
+        color: black;
+    }
+    .navbar .user span {
+        color: red;
+    }
+
+    .content-container {
+        margin-top: 20px;
+    }
+
+    .content-container p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .content-container ol {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .content-container ol li {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .content-container ol li a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .content-container ol li a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<h1>База знаний</h1>
+<div class="navbar">
+    <div class="nav-links">
+        <a href="/lab5/articles">Список статей</a>
+        <a href="/lab5/create">Создать статью</a>
+        {% if session['login'] %}
+            <a href="/lab5/logout">Выйти</a>
+        {% else %}
+            <a href="/lab5/login">Войти</a>
+            <a href="/lab5/register">Регистрация</a>
+        {% endif %}
+    </div>
+    <div class="user">
+        {% if session['login'] %}
+            <span>{{ session['login'] }}</span>
+        {% else %}
+            <span>Гость</span>
+        {% endif %}
+    </div>
+</div>
+
+
 {% endblock %}
+
 
