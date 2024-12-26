@@ -1,5 +1,4 @@
-# config.py
+# # config.py
 
-class Config:
-    SECRET_KEY = 'your_secret_key'
-    DB_TYPE = 'postgres'  # или 'sqlite'
+# class Config:
+#     DB_TYPE = 'postgres'  # Или 'sqlite' для SQLite

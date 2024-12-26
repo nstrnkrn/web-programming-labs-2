@@ -1,174 +1,3 @@
-# from flask import Blueprint, render_template, request, session, redirect, url_for
-# import psycopg2
-# from psycopg2.extras import RealDictCursor
-# from werkzeug.security import check_password_hash, generate_password_hash
-
-# lab5 = Blueprint('lab5', __name__)
-
-# # Подключение к базе данных PostgreSQL
-# # def get_db_connection():
-#     # conn = psycopg2.connect(
-#     #     host="localhost",
-#     #     database="irinanesterenko",
-#     #     user="irinanesterenko",
-#     #     password="123"
-#     # )
-
-# def get_db_connection():
-#     try:
-#         conn = psycopg2.connect(
-#         host="localhost",
-#         database="irinadb",
-#         user="irina",
-#         password="123"
-#     )
-#         return conn
-#     except psycopg2.Error as e:
-#         print(f"Ошибка подключения к базе данных: {e}")
-#         return None
-
-# # Функция для закрытия соединения с базой данных
-# def db_close(conn, cur):
-#     conn.commit()
-#     cur.close()
-#     conn.close()
-
-# @lab5.route('/lab5/')
-# def lab():
-#     return render_template('lab5/lab5.html', login=session.get('login'))
-
-
-
-# # @lab5.route('/lab5/register', methods=['GET', 'POST'])
-# # def register():
-# #     if request.method == 'GET':
-# #         return render_template('lab5/register.html')
-
-# #     login = request.form.get('login')
-# #     password = request.form.get('password')
-
-# #     if not (login and password):
-# #         return render_template('lab5/register.html', error='Заполните все поля')
-
-# #     try:
-# #         conn, cur = db_connect()
-        
-# #         # Проверка уникальности логина
-# #         cur.execute("SELECT login FROM users WHERE login = %s;", (login,))
-# #         if cur.fetchone():
-# #             db_close(conn, cur)
-# #             return render_template('lab5/register.html', error='Такой пользователь уже существует')
-        
-# #         password_hash = generate_password_hash(password)
-# #         cur.execute(f"INSERT INTO users(login, password) VALUES ('{login}', '{password_hash}');")
-        
-# #         # Регистрация пользователя
-# #         cur.execute("INSERT INTO users (login, password) VALUES (%s, %s);", (login, password))
-# #         conn.commit()
-        
-# #     except Exception as e:
-# #         print(f"Ошибка: {e}")
-# #         return render_template('lab5/register.html', error='Ошибка сервера')
-# #     finally:
-# #         db_close(conn, cur)
-    
-# #     return render_template('lab5/success.html', login=login)
-
-# @lab5.route('/lab5/register', methods=['GET', 'POST'])
-# def register():
-#     if request.method == 'GET':
-#         return render_template('lab5/register.html')
-    
-#     login = request.form.get('login')
-#     password = request.form.get('password')
-
-#     if not login or not password:
-#         return render_template('lab5/register.html', error='Заполните все поля')
-    
-#     # Подключение к базе данных
-#     conn = get_db_connection()
-#     if not conn:
-#         return "Ошибка подключения к базе данных", 500
-
-#     try:
-#         cur = conn.cursor(cursor_factory=RealDictCursor)
-#         cur.execute("SELECT login FROM users WHERE login = %s;", (login,))
-#         if cur.fetchone():
-#             cur.close()
-#             conn.close()
-#             return render_template('lab5/register.html', error='Такой пользователь уже существует')
-
-#         cur.execute("INSERT INTO users (login, password) VALUES (%s, %s);", (login, password))
-#         conn.commit()
-        
-#         cur.close()
-#         conn.close()
-#         return redirect(url_for('lab5.login'))
-    
-#     except psycopg2.Error as e:
-#         print(f"Ошибка при выполнении SQL-запроса: {e}")
-#         if 'cur' in locals():
-#             cur.close()
-#         if 'conn' in locals() and conn:
-#             conn.close()
-#         return "Внутренняя ошибка сервера", 500
-
-
-
-# @lab5.route('/lab5/login', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'GET':
-#         return render_template('lab5/login.html')
-
-#     if not user:
-#             db_close(conn, cur)
-#             return render_template('lab5/login.html', error='Логин и/или пароль неверны')
-
-#     if not check_password_hash(user['password'], password):
-#             db_close(conn, cur)
-#             return render_template('lab5/login.html', error='Логин и/или пароль неверны')
-    
-#     login = request.form.get('login')
-#     password = request.form.get('password')
-
-#     if not (login and password):
-#         return render_template('lab5/login.html', error="Заполните поля")
-
-#     # Подключение к базе данных
-#     conn = get_db_connection()
-#     cur = conn.cursor(cursor_factory=RealDictCursor)
-
-#     cur.execute("SELECT * FROM users WHERE login = %s;", (login,))
-#     user = cur.fetchone()
-
-#     if not user or user['password'] != password:
-#         cur.close()
-#         conn.close()
-#         return render_template('lab5/login.html', error='Логин и/или пароль неверны')
-
-#     # Успешный вход
-#     session['login'] = login
-#     cur.close()
-#     conn.close()
-
-#     return render_template('lab5/success_login.html', login=login)
-
-# @lab5.route('/lab5/logout')
-# def logout():
-#     session.pop('login', None)  # Удаляем логин из сессии
-#     return redirect(url_for('lab5.lab'))
-
-# # Обработчик создания статьи
-# @lab5.route('/lab5/create', methods=['GET', 'POST'])
-# def create():
-#     login = session.get('login')
-#     if not login:
-#         return redirect(url_for('lab5.login'))
-
-#     if request.method == 'GET':
-#         return render_template('lab5/create_article.html')
-
-
 
 from flask import Blueprint, render_template, request, redirect, session, current_app
 import psycopg2
@@ -178,11 +7,7 @@ import sqlite3
 from os import path
 
 lab5 = Blueprint('lab5', __name__)
-
-# config.py
-class Config:
-    DB_TYPE = 'postgres'  
-    lab5.secret_key = 'your_secret_key'
+lab5.secret_key = 'cat'
 
 
 
@@ -194,8 +19,8 @@ def db_connect():
     if current_app.config['DB_TYPE'] == 'postgres':
         conn = psycopg2.connect(
             host="localhost",
-            database="irinadb",
-            user="irina",
+            database="iradb",
+            user="ira",
             password="123"
         )
 
