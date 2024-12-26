@@ -1,46 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Успешный вход</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f9fafc;
-        }
-        .container {
-            margin-top: 100px;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        p {
-            color: #7f8c8d;
-            font-size: 18px;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .btn:hover {
-            background-color: #2980b9;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>🎉 Добро пожаловать!</h1>
-        <p>Вы успешно вошли в систему.</p>
-        <a href="/lab5" class="btn">Перейти на главную страницу базы знаний</a>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 5{% endblock %}
+
+{% block main %}
+    <h1>УРА! ВЫ ВОШЛИ! ВАШЕ ИМЯ: {{ login }}</h1>
+    <p><a href="/lab5/">Список статей</a></p>
+    <a href="/lab6/">Список офисов</a>
+{% endblock %}

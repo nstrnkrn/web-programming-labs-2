@@ -1,19 +1,13 @@
 {% extends "base.html" %}
 
-{% block lab %} Лабораторная работа 5 {% endblock %}
+{% block lab %}Лабораторная работа 5{% endblock %}
 
 {% block main %}
     <h1>Регистрация</h1>
-    {% if error %}
-        <div style="color: red;">{{ error }}</div>
-    {% endif %}
-    {% if success %}
-        <div style="color: green;">{{ success }}</div>
-    {% endif %}
     <form action="/lab5/register" method="post">
         <div>
             <label>
-                Логин: <input type="text" name="login" value="{{ login or '' }}">
+                Логин: <input type="text" name="login">
             </label>
         </div>
 
@@ -24,5 +18,9 @@
         </div>
         <button type="submit">Зарегистрироваться</button>
     </form>
+    <div class="error">
+        {{ error }}
+    </div>
+    <a href="/lab5/">Назад</a>
 {% endblock %}
 
